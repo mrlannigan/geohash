@@ -6,7 +6,7 @@ Geohash library for Node.js & Browser.
 Usage
 -----
 
-### geohash.encode (latitude, longitude, precision=9)
+### geohash.encode (latitude, longitude [,precision])
 
 Encode a pair of latitude and longitude into geohash. The third argument is
 optional, you can specify a length of this hash string, which also affect on
