@@ -1,0 +1,36 @@
+{
+  "name": "geohash",
+  "version": "1.0.0",
+  "description": "Node.js & Browser compatible javascript geohashing functions",
+  "main": "geohash.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mrlannigan/geohash.git"
+  },
+  "devDependencies": {
+    "docco": "0.6.x",
+    "uglify-js": "2.4.x"
+  },
+  "scripts": {
+    "build": "uglifyjs geohash.js -c \"evaluate=false\" --comments \"/    .*/\" -m --source-map geohash-min.map -o geohash-min.js",
+    "doc": "docco geohash.js"
+  },
+  "keywords": [
+    "geohash",
+    "geolocation",
+    "gps",
+    "latitude",
+    "longitude",
+    "lat",
+    "lon",
+    "lng"
+  ],
+  "author": "Julian Lannigan <julian@jlconsulting.co> (http://jlconsulting.co)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mrlannigan/geohash/issues"
+  }
+}

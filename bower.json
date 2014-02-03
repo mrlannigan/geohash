@@ -1,0 +1,6 @@
+{
+  "name": "geohash",
+  "version": "1.0.0",
+  "main": "geohash.js",
+  "ignore": ["geohash-min.js", "docs", "test", "*.yml", "*.map"]
+}

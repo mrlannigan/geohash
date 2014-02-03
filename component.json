@@ -1,0 +1,10 @@
+{
+  "name": "geohash",
+  "description": "Node.js & Browser compatible javascript geohashing functions.",
+  "keywords": ["geohash", "geolocation", "gps", "latitude", "longitude", "lat", "lon", "lng"],
+  "repo": "mrlannigan/geohash",
+  "main": "geohash.js",
+  "scripts": ["geohash.js"],
+  "version": "1.0.0",
+  "license": "MIT"
+}
