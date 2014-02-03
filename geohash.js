@@ -27,6 +27,12 @@
   /** Semantic version number */
   var version = '1.0.0';
 
+  /** Used to determine if values are of the language type Object */
+  var objectTypes = {
+    'function': true,
+    'object': true
+  };
+
   /** Used as a reference to the global object */
   var root = (objectTypes[typeof window] && window) || this;
 
@@ -135,7 +141,7 @@
         islon = !islon;
       }
     }
-    
+
     return [minlat, minlon, maxlat, maxlon];
   }
 
@@ -191,7 +197,7 @@
   else if (freeExports && freeModule) {
     // in Node.js or RingoJS
     if (moduleExports) {
-      (freeModule.exports = geohash).geohash = geohash;
+      freeModule.exports = geohash;
     }
     // in Narwhal or Rhino -require
     else {
