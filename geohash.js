@@ -56,8 +56,8 @@
 
   var BASE32_CODES = "0123456789bcdefghjkmnpqrstuvwxyz";
   var BASE32_CODES_DICT = {};
-  for(var i=0; i<BASE32_CODES.length; i++) {
-    BASE32_CODES_DICT[BASE32_CODES.charAt(i)]=i;
+  for (var i = 0; i < 32; i++) { // hardcoded length (BASE32_CODES.length)
+    BASE32_CODES_DICT[BASE32_CODES.charAt(i)] = i;
   }
 
   function encode (latitude, longitude, precision) {
