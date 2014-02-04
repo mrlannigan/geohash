@@ -4,7 +4,9 @@
   "description": "Node.js & Browser compatible javascript geohashing functions",
   "main": "geohash.js",
   "scripts": {
-    "test": "npm test"
+    "build": "uglifyjs geohash.js -c \"evaluate=false\" --comments \"/    .*/\" -m --source-map geohash-min.map -o geohash-min.js",
+    "doc": "docco geohash.js",
+    "test": "mocha --slow 5 --timeout 100 --colors --reporter spec --check-leaks"
   },
   "repository": {
     "type": "git",
@@ -12,11 +14,8 @@
   },
   "devDependencies": {
     "docco": "0.6.x",
-    "uglify-js": "2.4.x"
-  },
-  "scripts": {
-    "build": "uglifyjs geohash.js -c \"evaluate=false\" --comments \"/    .*/\" -m --source-map geohash-min.map -o geohash-min.js",
-    "doc": "docco geohash.js"
+    "uglify-js": "2.4.x",
+    "mocha": "~1.17.1"
   },
   "keywords": [
     "geohash",
