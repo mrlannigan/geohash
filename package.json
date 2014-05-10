@@ -4,9 +4,10 @@
   "description": "Node.js & Browser compatible javascript geohashing functions",
   "main": "geohash.js",
   "scripts": {
-    "build": "uglifyjs geohash.js -c \"evaluate=false\" --comments \"/    .*/\" -m --source-map geohash-min.map -o geohash-min.js",
-    "doc": "docco geohash.js",
-    "test": "mocha --slow 5 --timeout 100 --colors --reporter spec --check-leaks"
+    "build": "node_modules/.bin/uglifyjs geohash.js -c \"evaluate=false\" --comments \"/    .*/\" -m --source-map geohash-min.map -o geohash-min.js",
+    "doc": "node_modules/.bin/docco geohash.js",
+    "test": "node_modules/.bin/mocha --slow 5 --timeout 100 --colors --reporter spec --check-leaks test/runner.js",
+    "coverage": "node_modules/.bin/mocha --slow 5 --timeout 100 --colors --reporter html-cov --check-leaks test/runner.js > coverage.html"
   },
   "repository": {
     "type": "git",
@@ -15,7 +16,8 @@
   "devDependencies": {
     "docco": "0.6.x",
     "uglify-js": "2.4.x",
-    "mocha": "~1.17.1"
+    "mocha": "~1.17.1",
+    "blanket": "~1.1.6"
   },
   "keywords": [
     "geohash",
@@ -31,5 +33,10 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mrlannigan/geohash/issues"
+  },
+  "config": {
+    "blanket": {
+      "pattern": "geohash.js"
+    }
   }
 }

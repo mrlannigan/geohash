@@ -1,0 +1,1215 @@
+{
+  "instrumentation": "node-jscoverage",
+  "sloc": 77,
+  "hits": 75,
+  "misses": 2,
+  "coverage": 97.40259740259741,
+  "files": [
+    {
+      "filename": "/Users/julian/dev/geohash/geohash.js",
+      "coverage": 97.40259740259741,
+      "hits": 75,
+      "misses": 2,
+      "sloc": 77,
+      "source": {
+        "1": {
+          "source": "/**",
+          "coverage": ""
+        },
+        "2": {
+          "source": " * Copyright (c) 2014, Julian Lannigan.",
+          "coverage": ""
+        },
+        "3": {
+          "source": " * Copyright (c) 2011, Sun Ning.",
+          "coverage": ""
+        },
+        "4": {
+          "source": " *",
+          "coverage": ""
+        },
+        "5": {
+          "source": " * Permission is hereby granted, free of charge, to any person obtaining a copy",
+          "coverage": ""
+        },
+        "6": {
+          "source": " * of this software and associated documentation files (the \"Software\"), to deal",
+          "coverage": ""
+        },
+        "7": {
+          "source": " * in the Software without restriction, including without limitation the rights",
+          "coverage": ""
+        },
+        "8": {
+          "source": " * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell",
+          "coverage": ""
+        },
+        "9": {
+          "source": " * copies of the Software, and to permit persons to whom the Software is",
+          "coverage": ""
+        },
+        "10": {
+          "source": " * furnished to do so, subject to the following conditions:",
+          "coverage": ""
+        },
+        "11": {
+          "source": " *",
+          "coverage": ""
+        },
+        "12": {
+          "source": " * The above copyright notice and this permission notice shall be included in all",
+          "coverage": ""
+        },
+        "13": {
+          "source": " * copies or substantial portions of the Software.",
+          "coverage": ""
+        },
+        "14": {
+          "source": " *",
+          "coverage": ""
+        },
+        "15": {
+          "source": " * THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR",
+          "coverage": ""
+        },
+        "16": {
+          "source": " * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,",
+          "coverage": ""
+        },
+        "17": {
+          "source": " * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE",
+          "coverage": ""
+        },
+        "18": {
+          "source": " * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER",
+          "coverage": ""
+        },
+        "19": {
+          "source": " * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,",
+          "coverage": ""
+        },
+        "20": {
+          "source": " * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE",
+          "coverage": ""
+        },
+        "21": {
+          "source": " * SOFTWARE.",
+          "coverage": ""
+        },
+        "22": {
+          "source": " * ",
+          "coverage": ""
+        },
+        "23": {
+          "source": " */",
+          "coverage": ""
+        },
+        "24": {
+          "source": "",
+          "coverage": ""
+        },
+        "25": {
+          "source": ";(function () {",
+          "coverage": 2
+        },
+        "26": {
+          "source": "",
+          "coverage": ""
+        },
+        "27": {
+          "source": "  /** Semantic version number */",
+          "coverage": ""
+        },
+        "28": {
+          "source": "  var version = '1.0.0';",
+          "coverage": 2
+        },
+        "29": {
+          "source": "",
+          "coverage": ""
+        },
+        "30": {
+          "source": "  /** Used to determine if values are of the language type Object */",
+          "coverage": ""
+        },
+        "31": {
+          "source": "  var objectTypes = {",
+          "coverage": 2
+        },
+        "32": {
+          "source": "    'function': true,",
+          "coverage": ""
+        },
+        "33": {
+          "source": "    'object': true",
+          "coverage": ""
+        },
+        "34": {
+          "source": "  };",
+          "coverage": ""
+        },
+        "35": {
+          "source": "",
+          "coverage": ""
+        },
+        "36": {
+          "source": "  /** Used as a reference to the global object */",
+          "coverage": ""
+        },
+        "37": {
+          "source": "  var root = (objectTypes[typeof window] && window) || this;",
+          "coverage": 2
+        },
+        "38": {
+          "source": "",
+          "coverage": ""
+        },
+        "39": {
+          "source": "  /** Detect free variable `exports` */",
+          "coverage": ""
+        },
+        "40": {
+          "source": "  var freeExports = objectTypes[typeof exports] && exports && !exports.nodeType && exports;",
+          "coverage": 2
+        },
+        "41": {
+          "source": "",
+          "coverage": ""
+        },
+        "42": {
+          "source": "  /** Detect free variable `module` */",
+          "coverage": ""
+        },
+        "43": {
+          "source": "  var freeModule = objectTypes[typeof module] && module && !module.nodeType && module;",
+          "coverage": 2
+        },
+        "44": {
+          "source": "",
+          "coverage": ""
+        },
+        "45": {
+          "source": "  /** Detect free variable `global` from Node.js or Browserified code and use it as `root` */",
+          "coverage": ""
+        },
+        "46": {
+          "source": "  var freeGlobal = freeExports && freeModule && typeof global == 'object' && global;",
+          "coverage": 2
+        },
+        "47": {
+          "source": "  if (freeGlobal && (freeGlobal.global === freeGlobal || freeGlobal.window === freeGlobal || freeGlobal.self === freeGlobal)) {",
+          "coverage": 2
+        },
+        "48": {
+          "source": "    root = freeGlobal;",
+          "coverage": 2
+        },
+        "49": {
+          "source": "  }",
+          "coverage": ""
+        },
+        "50": {
+          "source": "",
+          "coverage": ""
+        },
+        "51": {
+          "source": "  /** Detect the popular CommonJS extension `module.exports` */",
+          "coverage": ""
+        },
+        "52": {
+          "source": "  var moduleExports = freeModule && freeModule.exports === freeExports && freeExports;",
+          "coverage": 2
+        },
+        "53": {
+          "source": "",
+          "coverage": ""
+        },
+        "54": {
+          "source": "  /** Main geohash object */",
+          "coverage": ""
+        },
+        "55": {
+          "source": "  var geohash = {};",
+          "coverage": 2
+        },
+        "56": {
+          "source": "",
+          "coverage": ""
+        },
+        "57": {
+          "source": "  var BASE32_CODES = \"0123456789bcdefghjkmnpqrstuvwxyz\";",
+          "coverage": 2
+        },
+        "58": {
+          "source": "  var BASE32_CODES_DICT = {};",
+          "coverage": 2
+        },
+        "59": {
+          "source": "  for (var i = 0; i < 32; i++) { // hardcoded length (BASE32_CODES.length)",
+          "coverage": 2
+        },
+        "60": {
+          "source": "    BASE32_CODES_DICT[BASE32_CODES.charAt(i)] = i;",
+          "coverage": 64
+        },
+        "61": {
+          "source": "  }",
+          "coverage": ""
+        },
+        "62": {
+          "source": "",
+          "coverage": ""
+        },
+        "63": {
+          "source": "  function encode (latitude, longitude, precision) {",
+          "coverage": 2
+        },
+        "64": {
+          "source": "    var chars = [],",
+          "coverage": 24
+        },
+        "65": {
+          "source": "      bits = 0,",
+          "coverage": ""
+        },
+        "66": {
+          "source": "      code,",
+          "coverage": ""
+        },
+        "67": {
+          "source": "      mid,",
+          "coverage": ""
+        },
+        "68": {
+          "source": "      islon = true,",
+          "coverage": ""
+        },
+        "69": {
+          "source": "      hash_value = 0,",
+          "coverage": ""
+        },
+        "70": {
+          "source": "      maxlat = 90, minlat = -90,",
+          "coverage": ""
+        },
+        "71": {
+          "source": "      maxlon = 180, minlon = -180;",
+          "coverage": ""
+        },
+        "72": {
+          "source": "",
+          "coverage": ""
+        },
+        "73": {
+          "source": "    precision = precision || 9;",
+          "coverage": 24
+        },
+        "74": {
+          "source": "",
+          "coverage": ""
+        },
+        "75": {
+          "source": "    while (chars.length < precision) {",
+          "coverage": 24
+        },
+        "76": {
+          "source": "      if (islon) {",
+          "coverage": 665
+        },
+        "77": {
+          "source": "        mid = (maxlon + minlon) / 2;",
+          "coverage": 337
+        },
+        "78": {
+          "source": "        if(longitude > mid) {",
+          "coverage": 337
+        },
+        "79": {
+          "source": "          hash_value = (hash_value << 1) + 1;",
+          "coverage": 162
+        },
+        "80": {
+          "source": "          minlon = mid;",
+          "coverage": 162
+        },
+        "81": {
+          "source": "        } else {",
+          "coverage": ""
+        },
+        "82": {
+          "source": "          hash_value = (hash_value << 1) + 0;",
+          "coverage": 175
+        },
+        "83": {
+          "source": "          maxlon = mid;",
+          "coverage": 175
+        },
+        "84": {
+          "source": "        }",
+          "coverage": ""
+        },
+        "85": {
+          "source": "      } else {",
+          "coverage": ""
+        },
+        "86": {
+          "source": "        mid = (maxlat + minlat) / 2;",
+          "coverage": 328
+        },
+        "87": {
+          "source": "        if (latitude > mid) {",
+          "coverage": 328
+        },
+        "88": {
+          "source": "          hash_value = (hash_value << 1) + 1;",
+          "coverage": 145
+        },
+        "89": {
+          "source": "          minlat = mid;",
+          "coverage": 145
+        },
+        "90": {
+          "source": "        } else {",
+          "coverage": ""
+        },
+        "91": {
+          "source": "          hash_value = (hash_value << 1) + 0;",
+          "coverage": 183
+        },
+        "92": {
+          "source": "          maxlat = mid;",
+          "coverage": 183
+        },
+        "93": {
+          "source": "        }",
+          "coverage": ""
+        },
+        "94": {
+          "source": "      }",
+          "coverage": ""
+        },
+        "95": {
+          "source": "      islon = !islon;",
+          "coverage": 665
+        },
+        "96": {
+          "source": "",
+          "coverage": ""
+        },
+        "97": {
+          "source": "      bits++;",
+          "coverage": 665
+        },
+        "98": {
+          "source": "      if (bits == 5) {",
+          "coverage": 665
+        },
+        "99": {
+          "source": "        code = BASE32_CODES[hash_value];",
+          "coverage": 133
+        },
+        "100": {
+          "source": "        chars.push(code);",
+          "coverage": 133
+        },
+        "101": {
+          "source": "        bits = 0;",
+          "coverage": 133
+        },
+        "102": {
+          "source": "        hash_value = 0;",
+          "coverage": 133
+        },
+        "103": {
+          "source": "      } ",
+          "coverage": ""
+        },
+        "104": {
+          "source": "    }",
+          "coverage": ""
+        },
+        "105": {
+          "source": "    return chars.join('');",
+          "coverage": 24
+        },
+        "106": {
+          "source": "  }",
+          "coverage": ""
+        },
+        "107": {
+          "source": "",
+          "coverage": ""
+        },
+        "108": {
+          "source": "  function decode_bbox (hash_string) {",
+          "coverage": 2
+        },
+        "109": {
+          "source": "    var islon = true,",
+          "coverage": 26
+        },
+        "110": {
+          "source": "      hash_value = 0,",
+          "coverage": ""
+        },
+        "111": {
+          "source": "      i = 0,",
+          "coverage": ""
+        },
+        "112": {
+          "source": "      l = hash_string.length,",
+          "coverage": ""
+        },
+        "113": {
+          "source": "      code,",
+          "coverage": ""
+        },
+        "114": {
+          "source": "      bits,",
+          "coverage": ""
+        },
+        "115": {
+          "source": "      bit,",
+          "coverage": ""
+        },
+        "116": {
+          "source": "      mid,",
+          "coverage": ""
+        },
+        "117": {
+          "source": "      maxlat = 90, minlat = -90,",
+          "coverage": ""
+        },
+        "118": {
+          "source": "      maxlon = 180, minlon = -180;",
+          "coverage": ""
+        },
+        "119": {
+          "source": "",
+          "coverage": ""
+        },
+        "120": {
+          "source": "    for(; i < l; i++) {",
+          "coverage": 26
+        },
+        "121": {
+          "source": "      code = hash_string[i].toLowerCase();",
+          "coverage": 149
+        },
+        "122": {
+          "source": "      hash_value = BASE32_CODES_DICT[code];",
+          "coverage": 149
+        },
+        "123": {
+          "source": "",
+          "coverage": ""
+        },
+        "124": {
+          "source": "      for (bits = 4; bits >= 0; bits--) {",
+          "coverage": 149
+        },
+        "125": {
+          "source": "        bit = (hash_value >> bits) & 1;",
+          "coverage": 745
+        },
+        "126": {
+          "source": "        if (islon) {",
+          "coverage": 745
+        },
+        "127": {
+          "source": "          mid = (maxlon + minlon) / 2;",
+          "coverage": 377
+        },
+        "128": {
+          "source": "          if (bit == 1) {",
+          "coverage": 377
+        },
+        "129": {
+          "source": "            minlon = mid;",
+          "coverage": 181
+        },
+        "130": {
+          "source": "          } else {",
+          "coverage": ""
+        },
+        "131": {
+          "source": "            maxlon = mid;",
+          "coverage": 196
+        },
+        "132": {
+          "source": "          }",
+          "coverage": ""
+        },
+        "133": {
+          "source": "        } else {",
+          "coverage": ""
+        },
+        "134": {
+          "source": "          mid = (maxlat + minlat) / 2;",
+          "coverage": 368
+        },
+        "135": {
+          "source": "          if (bit == 1) {",
+          "coverage": 368
+        },
+        "136": {
+          "source": "            minlat = mid;",
+          "coverage": 161
+        },
+        "137": {
+          "source": "          } else {",
+          "coverage": ""
+        },
+        "138": {
+          "source": "            maxlat = mid;",
+          "coverage": 207
+        },
+        "139": {
+          "source": "          }",
+          "coverage": ""
+        },
+        "140": {
+          "source": "        }",
+          "coverage": ""
+        },
+        "141": {
+          "source": "        islon = !islon;",
+          "coverage": 745
+        },
+        "142": {
+          "source": "      }",
+          "coverage": ""
+        },
+        "143": {
+          "source": "    }",
+          "coverage": ""
+        },
+        "144": {
+          "source": "",
+          "coverage": ""
+        },
+        "145": {
+          "source": "    return [minlat, minlon, maxlat, maxlon];",
+          "coverage": 26
+        },
+        "146": {
+          "source": "  }",
+          "coverage": ""
+        },
+        "147": {
+          "source": "",
+          "coverage": ""
+        },
+        "148": {
+          "source": "  function decode (hash_string) {",
+          "coverage": 2
+        },
+        "149": {
+          "source": "    var bbox = decode_bbox(hash_string),",
+          "coverage": 24
+        },
+        "150": {
+          "source": "      lat = (bbox[0] + bbox[2]) / 2,",
+          "coverage": ""
+        },
+        "151": {
+          "source": "      lon = (bbox[1] + bbox[3]) / 2,",
+          "coverage": ""
+        },
+        "152": {
+          "source": "      laterr = bbox[2] - lat,",
+          "coverage": ""
+        },
+        "153": {
+          "source": "      lonerr = bbox[3] - lon;",
+          "coverage": ""
+        },
+        "154": {
+          "source": "",
+          "coverage": ""
+        },
+        "155": {
+          "source": "    return {",
+          "coverage": 24
+        },
+        "156": {
+          "source": "      lat: lat, ",
+          "coverage": ""
+        },
+        "157": {
+          "source": "      lon: lon, ",
+          "coverage": ""
+        },
+        "158": {
+          "source": "      error: {",
+          "coverage": ""
+        },
+        "159": {
+          "source": "        lat: laterr,",
+          "coverage": ""
+        },
+        "160": {
+          "source": "        lon: lonerr",
+          "coverage": ""
+        },
+        "161": {
+          "source": "      }",
+          "coverage": ""
+        },
+        "162": {
+          "source": "    };",
+          "coverage": ""
+        },
+        "163": {
+          "source": "  }",
+          "coverage": ""
+        },
+        "164": {
+          "source": "",
+          "coverage": ""
+        },
+        "165": {
+          "source": "  /**",
+          "coverage": ""
+        },
+        "166": {
+          "source": "   * direction [lat, lon], i.e.",
+          "coverage": ""
+        },
+        "167": {
+          "source": "   * [1,0] - north",
+          "coverage": ""
+        },
+        "168": {
+          "source": "   * [1,1] - northeast",
+          "coverage": ""
+        },
+        "169": {
+          "source": "   * ...",
+          "coverage": ""
+        },
+        "170": {
+          "source": "   */",
+          "coverage": ""
+        },
+        "171": {
+          "source": "  function neighbor (hashstring, direction)  {",
+          "coverage": 2
+        },
+        "172": {
+          "source": "    var lonlat = decode(hashstring),",
+          "coverage": 16
+        },
+        "173": {
+          "source": "      neighbor_lat = lonlat.lat + direction[0] * lonlat.error.lat * 2,",
+          "coverage": ""
+        },
+        "174": {
+          "source": "      neighbor_lon = lonlat.lon + direction[1] * lonlat.error.lon * 2;",
+          "coverage": ""
+        },
+        "175": {
+          "source": "",
+          "coverage": ""
+        },
+        "176": {
+          "source": "    return encode(neighbor_lat, neighbor_lon, hashstring.length);",
+          "coverage": 16
+        },
+        "177": {
+          "source": "  }",
+          "coverage": ""
+        },
+        "178": {
+          "source": "",
+          "coverage": ""
+        },
+        "179": {
+          "source": "  geohash.VERSION = version;",
+          "coverage": 2
+        },
+        "180": {
+          "source": "  geohash.encode = encode;",
+          "coverage": 2
+        },
+        "181": {
+          "source": "  geohash.decode = decode;",
+          "coverage": 2
+        },
+        "182": {
+          "source": "  geohash.decode_bbox = decode_bbox;",
+          "coverage": 2
+        },
+        "183": {
+          "source": "  geohash.neighbor = neighbor;",
+          "coverage": 2
+        },
+        "184": {
+          "source": "",
+          "coverage": ""
+        },
+        "185": {
+          "source": "  // some AMD build optimizers like r.js check for condition patterns like the following:",
+          "coverage": ""
+        },
+        "186": {
+          "source": "  if (typeof define == 'function' && typeof define.amd == 'object' && define.amd) {",
+          "coverage": 2
+        },
+        "187": {
+          "source": "    define('geohash', function() {",
+          "coverage": 1
+        },
+        "188": {
+          "source": "      return geohash;",
+          "coverage": 1
+        },
+        "189": {
+          "source": "    });",
+          "coverage": ""
+        },
+        "190": {
+          "source": "  }",
+          "coverage": ""
+        },
+        "191": {
+          "source": "  // check for `exports` after `define` in case a build optimizer adds an `exports` object",
+          "coverage": ""
+        },
+        "192": {
+          "source": "  else if (freeExports && freeModule) {",
+          "coverage": 1
+        },
+        "193": {
+          "source": "    // in Node.js or RingoJS",
+          "coverage": ""
+        },
+        "194": {
+          "source": "    if (moduleExports) {",
+          "coverage": 1
+        },
+        "195": {
+          "source": "      freeModule.exports = geohash;",
+          "coverage": 1
+        },
+        "196": {
+          "source": "    }",
+          "coverage": ""
+        },
+        "197": {
+          "source": "    // in Narwhal or Rhino -require",
+          "coverage": ""
+        },
+        "198": {
+          "source": "    else {",
+          "coverage": ""
+        },
+        "199": {
+          "source": "      freeExports.geohash = geohash;",
+          "coverage": 0
+        },
+        "200": {
+          "source": "    }",
+          "coverage": ""
+        },
+        "201": {
+          "source": "  }",
+          "coverage": ""
+        },
+        "202": {
+          "source": "  else {",
+          "coverage": ""
+        },
+        "203": {
+          "source": "    // in a browser or Rhino",
+          "coverage": ""
+        },
+        "204": {
+          "source": "    root.geohash = geohash;",
+          "coverage": 0
+        },
+        "205": {
+          "source": "  }",
+          "coverage": ""
+        },
+        "206": {
+          "source": "",
+          "coverage": ""
+        },
+        "207": {
+          "source": "}.call(this));",
+          "coverage": ""
+        },
+        "208": {
+          "source": "",
+          "coverage": ""
+        }
+      }
+    }
+  ],
+  "stats": {
+    "suites": 8,
+    "tests": 35,
+    "passes": 35,
+    "pending": 0,
+    "failures": 0,
+    "start": "2014-02-04T20:40:10.369Z",
+    "end": "2014-02-04T20:40:10.403Z",
+    "duration": 34
+  },
+  "tests": [
+    {
+      "title": "should return dq9c0m0wjvtc when encoded",
+      "fullTitle": "geohash #encode() should return dq9c0m0wjvtc when encoded",
+      "duration": 0
+    },
+    {
+      "title": "should return 9q59xbd8eupu when encoded",
+      "fullTitle": "geohash #encode() should return 9q59xbd8eupu when encoded",
+      "duration": 0
+    },
+    {
+      "title": "should return sr60kgfm1grf when encoded",
+      "fullTitle": "geohash #encode() should return sr60kgfm1grf when encoded",
+      "duration": 0
+    },
+    {
+      "title": "should return rbsm15g1hgxc when encoded",
+      "fullTitle": "geohash #encode() should return rbsm15g1hgxc when encoded",
+      "duration": 0
+    },
+    {
+      "title": "should return dks8 when encoded",
+      "fullTitle": "geohash #encode() should return dks8 when encoded",
+      "duration": 0
+    },
+    {
+      "title": "should return f280sd when encoded",
+      "fullTitle": "geohash #encode() should return f280sd when encoded",
+      "duration": 0
+    },
+    {
+      "title": "should return y5 when encoded",
+      "fullTitle": "geohash #encode() should return y5 when encoded",
+      "duration": 0
+    },
+    {
+      "title": "should return g when encoded",
+      "fullTitle": "geohash #encode() should return g when encoded",
+      "duration": 0
+    },
+    {
+      "title": "hash dq9c0m0wjvtc should return 36.76680679433048, -76.27713488414884 when decoded",
+      "fullTitle": "geohash #decode() hash dq9c0m0wjvtc should return 36.76680679433048, -76.27713488414884 when decoded",
+      "duration": 0
+    },
+    {
+      "title": "hash 9q59xbd8eupu should return 34.01652649976313, -118.48394410684705 when decoded",
+      "fullTitle": "geohash #decode() hash 9q59xbd8eupu should return 34.01652649976313, -118.48394410684705 when decoded",
+      "duration": 0
+    },
+    {
+      "title": "hash sr60kgfm1grf should return 40.846670838072896, 14.27441580221057 when decoded",
+      "fullTitle": "geohash #decode() hash sr60kgfm1grf should return 40.846670838072896, 14.27441580221057 when decoded",
+      "duration": 0
+    },
+    {
+      "title": "hash rbsm15g1hgxc should return -41.28780369646847, 174.77484209463 when decoded",
+      "fullTitle": "geohash #decode() hash rbsm15g1hgxc should return -41.28780369646847, 174.77484209463 when decoded",
+      "duration": 0
+    },
+    {
+      "title": "hash dks8 should return 25.400390625, -72.24609375 when decoded",
+      "fullTitle": "geohash #decode() hash dks8 should return 25.400390625, -72.24609375 when decoded",
+      "duration": 0
+    },
+    {
+      "title": "hash f280sd should return 47.91412353515625, -78.5467529296875 when decoded",
+      "fullTitle": "geohash #decode() hash f280sd should return 47.91412353515625, -78.5467529296875 when decoded",
+      "duration": 0
+    },
+    {
+      "title": "hash y5 should return 64.6875, 95.625 when decoded",
+      "fullTitle": "geohash #decode() hash y5 should return 64.6875, 95.625 when decoded",
+      "duration": 0
+    },
+    {
+      "title": "hash g should return 67.5, -22.5 when decoded",
+      "fullTitle": "geohash #decode() hash g should return 67.5, -22.5 when decoded",
+      "duration": 0
+    },
+    {
+      "title": "should return correct bounding box of dks8 hash",
+      "fullTitle": "geohash #decode_bbox() should return correct bounding box of dks8 hash",
+      "duration": 0
+    },
+    {
+      "title": "should return correct bounding box of dq9c0m0wjvtc hash",
+      "fullTitle": "geohash #decode_bbox() should return correct bounding box of dq9c0m0wjvtc hash",
+      "duration": 1
+    },
+    {
+      "title": "should return correct neighbor in direction of north",
+      "fullTitle": "geohash #neighbor() hash d9cw should return correct neighbor in direction of north",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of northeast",
+      "fullTitle": "geohash #neighbor() hash d9cw should return correct neighbor in direction of northeast",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of east",
+      "fullTitle": "geohash #neighbor() hash d9cw should return correct neighbor in direction of east",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of southeast",
+      "fullTitle": "geohash #neighbor() hash d9cw should return correct neighbor in direction of southeast",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of south",
+      "fullTitle": "geohash #neighbor() hash d9cw should return correct neighbor in direction of south",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of southwest",
+      "fullTitle": "geohash #neighbor() hash d9cw should return correct neighbor in direction of southwest",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of west",
+      "fullTitle": "geohash #neighbor() hash d9cw should return correct neighbor in direction of west",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of northwest",
+      "fullTitle": "geohash #neighbor() hash d9cw should return correct neighbor in direction of northwest",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of north",
+      "fullTitle": "geohash #neighbor() hash 3kw23 should return correct neighbor in direction of north",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of northeast",
+      "fullTitle": "geohash #neighbor() hash 3kw23 should return correct neighbor in direction of northeast",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of east",
+      "fullTitle": "geohash #neighbor() hash 3kw23 should return correct neighbor in direction of east",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of southeast",
+      "fullTitle": "geohash #neighbor() hash 3kw23 should return correct neighbor in direction of southeast",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of south",
+      "fullTitle": "geohash #neighbor() hash 3kw23 should return correct neighbor in direction of south",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of southwest",
+      "fullTitle": "geohash #neighbor() hash 3kw23 should return correct neighbor in direction of southwest",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of west",
+      "fullTitle": "geohash #neighbor() hash 3kw23 should return correct neighbor in direction of west",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of northwest",
+      "fullTitle": "geohash #neighbor() hash 3kw23 should return correct neighbor in direction of northwest",
+      "duration": 0
+    },
+    {
+      "title": "should be setup as a AMD module",
+      "fullTitle": "AMD module should be setup as a AMD module",
+      "duration": 21
+    }
+  ],
+  "failures": [],
+  "passes": [
+    {
+      "title": "should return dq9c0m0wjvtc when encoded",
+      "fullTitle": "geohash #encode() should return dq9c0m0wjvtc when encoded",
+      "duration": 0
+    },
+    {
+      "title": "should return 9q59xbd8eupu when encoded",
+      "fullTitle": "geohash #encode() should return 9q59xbd8eupu when encoded",
+      "duration": 0
+    },
+    {
+      "title": "should return sr60kgfm1grf when encoded",
+      "fullTitle": "geohash #encode() should return sr60kgfm1grf when encoded",
+      "duration": 0
+    },
+    {
+      "title": "should return rbsm15g1hgxc when encoded",
+      "fullTitle": "geohash #encode() should return rbsm15g1hgxc when encoded",
+      "duration": 0
+    },
+    {
+      "title": "should return dks8 when encoded",
+      "fullTitle": "geohash #encode() should return dks8 when encoded",
+      "duration": 0
+    },
+    {
+      "title": "should return f280sd when encoded",
+      "fullTitle": "geohash #encode() should return f280sd when encoded",
+      "duration": 0
+    },
+    {
+      "title": "should return y5 when encoded",
+      "fullTitle": "geohash #encode() should return y5 when encoded",
+      "duration": 0
+    },
+    {
+      "title": "should return g when encoded",
+      "fullTitle": "geohash #encode() should return g when encoded",
+      "duration": 0
+    },
+    {
+      "title": "hash dq9c0m0wjvtc should return 36.76680679433048, -76.27713488414884 when decoded",
+      "fullTitle": "geohash #decode() hash dq9c0m0wjvtc should return 36.76680679433048, -76.27713488414884 when decoded",
+      "duration": 0
+    },
+    {
+      "title": "hash 9q59xbd8eupu should return 34.01652649976313, -118.48394410684705 when decoded",
+      "fullTitle": "geohash #decode() hash 9q59xbd8eupu should return 34.01652649976313, -118.48394410684705 when decoded",
+      "duration": 0
+    },
+    {
+      "title": "hash sr60kgfm1grf should return 40.846670838072896, 14.27441580221057 when decoded",
+      "fullTitle": "geohash #decode() hash sr60kgfm1grf should return 40.846670838072896, 14.27441580221057 when decoded",
+      "duration": 0
+    },
+    {
+      "title": "hash rbsm15g1hgxc should return -41.28780369646847, 174.77484209463 when decoded",
+      "fullTitle": "geohash #decode() hash rbsm15g1hgxc should return -41.28780369646847, 174.77484209463 when decoded",
+      "duration": 0
+    },
+    {
+      "title": "hash dks8 should return 25.400390625, -72.24609375 when decoded",
+      "fullTitle": "geohash #decode() hash dks8 should return 25.400390625, -72.24609375 when decoded",
+      "duration": 0
+    },
+    {
+      "title": "hash f280sd should return 47.91412353515625, -78.5467529296875 when decoded",
+      "fullTitle": "geohash #decode() hash f280sd should return 47.91412353515625, -78.5467529296875 when decoded",
+      "duration": 0
+    },
+    {
+      "title": "hash y5 should return 64.6875, 95.625 when decoded",
+      "fullTitle": "geohash #decode() hash y5 should return 64.6875, 95.625 when decoded",
+      "duration": 0
+    },
+    {
+      "title": "hash g should return 67.5, -22.5 when decoded",
+      "fullTitle": "geohash #decode() hash g should return 67.5, -22.5 when decoded",
+      "duration": 0
+    },
+    {
+      "title": "should return correct bounding box of dks8 hash",
+      "fullTitle": "geohash #decode_bbox() should return correct bounding box of dks8 hash",
+      "duration": 0
+    },
+    {
+      "title": "should return correct bounding box of dq9c0m0wjvtc hash",
+      "fullTitle": "geohash #decode_bbox() should return correct bounding box of dq9c0m0wjvtc hash",
+      "duration": 1
+    },
+    {
+      "title": "should return correct neighbor in direction of north",
+      "fullTitle": "geohash #neighbor() hash d9cw should return correct neighbor in direction of north",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of northeast",
+      "fullTitle": "geohash #neighbor() hash d9cw should return correct neighbor in direction of northeast",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of east",
+      "fullTitle": "geohash #neighbor() hash d9cw should return correct neighbor in direction of east",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of southeast",
+      "fullTitle": "geohash #neighbor() hash d9cw should return correct neighbor in direction of southeast",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of south",
+      "fullTitle": "geohash #neighbor() hash d9cw should return correct neighbor in direction of south",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of southwest",
+      "fullTitle": "geohash #neighbor() hash d9cw should return correct neighbor in direction of southwest",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of west",
+      "fullTitle": "geohash #neighbor() hash d9cw should return correct neighbor in direction of west",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of northwest",
+      "fullTitle": "geohash #neighbor() hash d9cw should return correct neighbor in direction of northwest",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of north",
+      "fullTitle": "geohash #neighbor() hash 3kw23 should return correct neighbor in direction of north",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of northeast",
+      "fullTitle": "geohash #neighbor() hash 3kw23 should return correct neighbor in direction of northeast",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of east",
+      "fullTitle": "geohash #neighbor() hash 3kw23 should return correct neighbor in direction of east",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of southeast",
+      "fullTitle": "geohash #neighbor() hash 3kw23 should return correct neighbor in direction of southeast",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of south",
+      "fullTitle": "geohash #neighbor() hash 3kw23 should return correct neighbor in direction of south",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of southwest",
+      "fullTitle": "geohash #neighbor() hash 3kw23 should return correct neighbor in direction of southwest",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of west",
+      "fullTitle": "geohash #neighbor() hash 3kw23 should return correct neighbor in direction of west",
+      "duration": 0
+    },
+    {
+      "title": "should return correct neighbor in direction of northwest",
+      "fullTitle": "geohash #neighbor() hash 3kw23 should return correct neighbor in direction of northwest",
+      "duration": 0
+    },
+    {
+      "title": "should be setup as a AMD module",
+      "fullTitle": "AMD module should be setup as a AMD module",
+      "duration": 21
+    }
+  ]
+}

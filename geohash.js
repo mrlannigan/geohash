@@ -19,7 +19,7 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- * 
+ *
  */
 
 ;(function () {
@@ -59,6 +59,17 @@
   for (var i = 0; i < 32; i++) { // hardcoded length (BASE32_CODES.length)
     BASE32_CODES_DICT[BASE32_CODES.charAt(i)] = i;
   }
+
+  var DIRECTIONS = {
+    'north': [1, 0],
+    'northeast': [1, 1],
+    'east': [0, 1],
+    'southeast': [-1, 1],
+    'south': [-1, 0],
+    'southwest': [-1, -1],
+    'west': [0, -1],
+    'northwest': [1, -1]
+  };
 
   function encode (latitude, longitude, precision) {
     var chars = [],
@@ -100,7 +111,7 @@
         chars.push(code);
         bits = 0;
         hash_value = 0;
-      } 
+      }
     }
     return chars.join('');
   }
@@ -153,8 +164,8 @@
       lonerr = bbox[3] - lon;
 
     return {
-      lat: lat, 
-      lon: lon, 
+      lat: lat,
+      lon: lon,
       error: {
         lat: laterr,
         lon: lonerr
@@ -163,12 +174,20 @@
   }
 
   /**
-   * direction [lat, lon], i.e.
+   * direction [lat, lon] or string, i.e.
    * [1,0] - north
    * [1,1] - northeast
    * ...
    */
   function neighbor (hashstring, direction)  {
+    if (typeof direction === 'string') {
+      direction = DIRECTIONS[direction];
+
+      if (!direction) {
+        throw new Error('Invalid direction. Look at a compress and pick a better one.')
+      }
+    }
+
     var lonlat = decode(hashstring),
       neighbor_lat = lonlat.lat + direction[0] * lonlat.error.lat * 2,
       neighbor_lon = lonlat.lon + direction[1] * lonlat.error.lon * 2;
@@ -184,11 +203,6 @@
 
   // some AMD build optimizers like r.js check for condition patterns like the following:
   if (typeof define == 'function' && typeof define.amd == 'object' && define.amd) {
-    // Expose geohash to the global object even when an AMD loader is present in
-    // case geohash is loaded with a RequireJS shim config.
-    // See http://requirejs.org/docs/api.html#config-shim
-    root.geohash = geohash;
-
     define('geohash', function() {
       return geohash;
     });

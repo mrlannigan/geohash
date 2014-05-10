@@ -87,9 +87,20 @@ describe('geohash', function() {
     test_neighbors.forEach(function (test) {
       describe('hash ' + test.hash, function() {
         test.neighbors.forEach(function (neighbor) {
-          it('should return correct neighbor in direction of ' + neighbor.direction, function() {
+          it('should return correct neighbor in direction of ' + neighbor.direction + ' using array notation', function() {
             assert.equal(geohash.neighbor(test.hash, DIRECTIONS[neighbor.direction]), neighbor.hash);
           });
+          it('should return correct neighbor in direction of ' + neighbor.direction + ' using string representation', function() {
+            assert.equal(geohash.neighbor(test.hash, neighbor.direction), neighbor.hash);
+          });
+        });
+      });
+    });
+
+    describe('bad neighbor direction', function() {
+      it('should throw an exception', function() {
+        assert.throws(function() {
+          geohash.neighbor('1kw9', 'baddirection');
         });
       });
     });
