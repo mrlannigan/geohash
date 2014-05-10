@@ -1,6 +1,8 @@
 geohash
 ============
 
+[![Build Status](https://travis-ci.org/mrlannigan/geohash.svg?branch=master)](https://travis-ci.org/mrlannigan/geohash)
+
 Geohash library for Node.js & Browser.
 
 Usage
@@ -19,7 +21,7 @@ is returned with key `lat` and `lon`.
 
 ### geohash.neighbor (hashstring, direction)
 
-Find neighbor of a geohash string in certain direction. Direction is a 
+Find neighbor of a geohash string in certain direction. Direction is a
 two-element array, i.e. [1,0] means north, [-1,-1] means southwest.
 
 ### geohash.decode_bbox (hashstring)
@@ -32,4 +34,3 @@ About Geohash
 
 Check [Wikipedia](http://en.wikipedia.org/wiki/Geohash "Wiki page for geohash")
 for more information.
-    
