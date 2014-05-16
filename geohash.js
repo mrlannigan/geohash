@@ -184,7 +184,7 @@
       direction = DIRECTIONS[direction];
 
       if (!direction) {
-        throw new Error('Invalid direction. Look at a compress and pick a better one.')
+        throw new Error('Invalid direction. Look at a compass and pick a better one.')
       }
     }
 
